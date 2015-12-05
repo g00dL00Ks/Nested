@@ -1,0 +1,33 @@
+
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pro.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pro.description %>
+</p>
+
+<h2>Workout types</h2>
+
+<% if @pro.workouts.any? %>
+<ul>
+ <% @pro.workouts.each do |workout| %>
+<li>Weights: <%= workout.weights %></li>
+<li>Yoga: <%= workout.yoga %></li>
+<li>Running: <%= workout.running %></li>
+ <% end %>
+</ul>
+<% else %>
+<p>none available</p>
+<% end %>
+
+<%= link_to 'Edit', edit_pro_path(@pro) %> |
+<%= link_to 'Back', pros_path %>
+
+
+</div>
