@@ -1,27 +1,19 @@
-<div class="container">
 <%= simple_form_for(@pro) do |f| %>
   <%= f.error_notification %>
-
 
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-<h3>workouts</h3>
-  <div id='workouts'>
-    <%= f.simple_fields_for :workouts do |workout| %>
-      <%= render 'workout_fields', :f => workout %>
-    <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'add workout', f, :workouts %>
+    
+    <h3>workouts</h3>
+    <div id='workouts'>
+      <%= f.simple_fields_for :workout do |workout| %>
+        <%= render 'workout_fields', :f => workout %>
+      <% end %>
     </div>
-  </div>
-
-
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
-
 <% end %>
-</div>

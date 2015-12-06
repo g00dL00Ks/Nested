@@ -1,5 +1,3 @@
-
-<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -14,20 +12,11 @@
 
 <h2>Workout types</h2>
 
-<% if @pro.workouts.any? %>
 <ul>
- <% @pro.workouts.each do |workout| %>
-<li>Weights: <%= workout.weights %></li>
-<li>Yoga: <%= workout.yoga %></li>
-<li>Running: <%= workout.running %></li>
- <% end %>
+  <li>Weights: <%= @pro.workout.weights %></li>
+  <li>Yoga: <%= @pro.workout.yoga %></li>
+  <li>Running: <%= @pro.workout.running %></li>
 </ul>
-<% else %>
-<p>none available</p>
-<% end %>
 
 <%= link_to 'Edit', edit_pro_path(@pro) %> |
 <%= link_to 'Back', pros_path %>
-
-
-</div>

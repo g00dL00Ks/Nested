@@ -16,6 +16,7 @@ class ProsController < ApplicationController
   # GET /pros/new
   def new
     @pro = Pro.new
+    @pro.build_workout
   end
 
   # GET /pros/1/edit
@@ -70,6 +71,6 @@ class ProsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pro_params
-      params.require(:pro).permit(:name, :description, workouts_attributes: [:weights, :yoga, :running])
+      params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running])
     end
 end
