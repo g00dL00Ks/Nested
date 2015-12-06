@@ -42,3 +42,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'annotate', group: :development
+gem 'quiet_assets', group: :development
+
+gem 'ransack'

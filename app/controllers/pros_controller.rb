@@ -4,7 +4,17 @@ class ProsController < ApplicationController
   # GET /pros
   # GET /pros.json
   def index
-    @pros = Pro.all
+    if params[:q]
+      @params = params[:q]
+      @params.delete(:workout_weights_true) if @params[:workout_weights_true] == '0'
+      @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
+      @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
+    else
+      @params = []
+    end
+
+    @q = Pro.ransack(@params)
+    @pros = @q.result(distinct: true).includes(:workout)
   end
 
   # GET /pros/1
