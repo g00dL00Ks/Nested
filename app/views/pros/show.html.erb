@@ -13,10 +13,14 @@
 <h2>Workout types</h2>
 
 <ul>
-  <li>Weights: <%= @pro.workout.weights %></li>
-  <li>Yoga: <%= @pro.workout.yoga %></li>
-  <li>Running: <%= @pro.workout.running %></li>
+  <%= @pro.workout.weights ? raw('<li>Weights</li>') : nil %>
+  <%= @pro.workout.yoga ? raw('<li>Yoga</li>') : nil %>
+  <%= @pro.workout.running ? raw('<li>Running</li>') : nil %>
 </ul>
+
+<% if !@pro.workout.weights && !@pro.workout.yoga && !@pro.workout.running %>
+  <p>none available</p>
+<% end %>
 
 <%= link_to 'Edit', edit_pro_path(@pro) %> |
 <%= link_to 'Back', pros_path %>
