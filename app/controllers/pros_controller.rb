@@ -4,17 +4,7 @@ class ProsController < ApplicationController
   # GET /pros
   # GET /pros.json
   def index
-    if params[:q]
-      @params = params[:q]
-      @params.delete(:workout_weights_true) if @params[:workout_weights_true] == '0'
-      @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
-      @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
-    else
-      @params = []
-    end
-
-    @q = Pro.ransack(@params)
-    @pros = @q.result(distinct: true).includes(:workout)
+    @pros = Pro.all
   end
 
   # GET /pros/1
@@ -71,6 +61,20 @@ class ProsController < ApplicationController
       format.html { redirect_to pros_url, notice: 'Pro was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def results
+    if params[:q]
+      @params = params[:q]
+      @params.delete(:workout_weights_true) if @params[:workout_weights_true] == '0'
+      @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
+      @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
+    else
+      @params = []
+    end
+
+    @q = Pro.ransack(@params)
+    @pros = @q.result(distinct: true).includes(:workout)
   end
 
   private
