@@ -13,7 +13,16 @@
     </div>
   </div>
 
+    <h3>locations</h3>
+    <div id='locations'>
+      <%= f.simple_fields_for :location do |location| %>
+        <%= render 'location_fields', :f => location %>
+      <% end %>
+    </div>
+
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
 <% end %>

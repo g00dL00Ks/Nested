@@ -11,5 +11,7 @@
 
 class Pro < ActiveRecord::Base
 	has_one :workout, dependent: :destroy
+	has_one :location, dependent: :destroy	
 	accepts_nested_attributes_for :workout, reject_if: :all_blank, allow_destroy: true
+	accepts_nested_attributes_for :location, reject_if: :all_blank, allow_destroy: true
 end
