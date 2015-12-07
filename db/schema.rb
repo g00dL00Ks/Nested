@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204220141) do
+ActiveRecord::Schema.define(version: 20151205013644) do
+
+  create_table "locations", force: true do |t|
+    t.boolean  "hollywood"
+    t.boolean  "westside"
+    t.boolean  "valley"
+    t.boolean  "century_city"
+    t.integer  "pro_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["pro_id"], name: "index_locations_on_pro_id"
 
   create_table "pros", force: true do |t|
     t.string   "name"
