@@ -1,17 +1,4 @@
-<h1>Listing pros</h1>
-
-<div class="well well-sm">
-  <p><strong>Workout filter: </strong></p>
-
-  <%= search_form_for @q, url: results_pros_path do |f| %>
-
-    <%= f.input :workout_weights_true, as: :boolean, label: "Weights" %>
-    <%= f.input :workout_yoga_true, as: :boolean, label: "Yoga" %>
-    <%= f.input :workout_running_true, as: :boolean, label: "Running" %>
-
-    <%= f.button :submit %>
-  <% end %>
-</div>
+<h1>Search result</h1>
 
 <table class="table">
   <thead>
