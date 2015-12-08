@@ -13,6 +13,7 @@
   <tbody>
     <% @pros.each do |pro| %>
       <tr>
+        <td><%= image_tag pro.image.url(:thumb) %></td>        
         <td><%= pro.name %></td>
         <td><%= pro.description %></td>
         <td>

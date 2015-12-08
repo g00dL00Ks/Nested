@@ -1,0 +1,30 @@
+<%
+# this page is not working
+# how do i create as summary overview page of the account?
+%>
+
+
+<h1>Welcome <%= @user.name %> </h1> <br>
+<p>Here's your account info:</p>
+<br>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>      
+      <th>Email</th>
+      <th>Sessions</th>   
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+    <thead>
+    <tr>
+      <th>@user.name</th>      
+      <th>@user.email</th>
+      <th>@user.sessions</th>   
+      <th colspan="3"></th>
+    </tr>
+  </thead>

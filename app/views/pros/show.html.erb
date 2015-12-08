@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
   <strong>Name:</strong>
   <%= @pro.name %>
+</p>
+
+
+<p>
+<%= image_tag @pro.image.url(:thumb) %>
 </p>
 
 <p>

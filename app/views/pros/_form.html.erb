@@ -4,7 +4,10 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-    
+    <%= f.input :image, :as => :file %>
+
+
+
     <h3>workouts</h3>
     <div id='workouts'>
       <%= f.simple_fields_for :workout do |workout| %>
@@ -21,7 +24,6 @@
     </div>
 
 
-<<<<<<< HEAD
     <h3>Workout style</h3>
     <div id='styles'>
       <%= f.simple_fields_for :style do |style| %>
@@ -29,8 +31,6 @@
       <% end %>
     </div>
 
-=======
->>>>>>> origin/master
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

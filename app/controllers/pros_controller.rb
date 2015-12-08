@@ -4,7 +4,26 @@ class ProsController < ApplicationController
   # GET /pros
   # GET /pros.json
   def index
-    @pros = Pro.all
+    # on the index page we want to filter on the same page
+    # quiz page will deliver results on a new page
+     if params[:q]
+      @params = params[:q]
+      @params.delete(:workout_weights_true) if @params[:workout_weights_true] == '0'
+      @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
+      @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
+
+
+      @params.delete(:location_hollywood_true) if @params[:location_hollywood_true] == '0'
+      @params.delete(:location_westside_true) if @params[:location_westside_true] == '0'
+      @params.delete(:location_valley_true) if @params[:location_valley_true] == '0'
+      @params.delete(:location_century_city_true) if @params[:location_century_city_true] == '0'
+
+    else
+      @params = []
+    end
+
+    @q = Pro.ransack(@params)
+    @pros = @q.result(distinct: true).includes(:workout)
   end
 
   def quiz
@@ -21,10 +40,7 @@ class ProsController < ApplicationController
     @pro = Pro.new
     @pro.build_workout
     @pro.build_location
-<<<<<<< HEAD
     @pro.build_style    
-=======
->>>>>>> origin/master
   end
 
   # GET /pros/1/edit
@@ -100,15 +116,11 @@ class ProsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pro_params
-<<<<<<< HEAD
-      params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running],
+      params.require(:pro).permit(:name, :description, :image, workout_attributes: [:weights, :yoga, :running],
         location_attributes: [:hollywood, :westside, :valley, :century_city],
-        style_attributes: [:appraoch, :intensity, :plan])
+        style_attributes: [:approach, :intensity, :plan])
 
 
-=======
-      params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running], location_attributes: [:hollywood, :westside, :valley, :century_city])
->>>>>>> origin/master
 
     end
 end
