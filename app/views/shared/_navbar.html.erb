@@ -19,12 +19,25 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li class="dropdown">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  Manage Account<span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><%= link_to "Account Overview", account_path %></li>
           <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 
+<<<<<<< HEAD
+=======
+=======
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Manage Account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+>>>>>>> origin/master
+>>>>>>> origin/master
         
         <% else %>
           <li><%= link_to "Sign In", new_user_session_path %></li>
