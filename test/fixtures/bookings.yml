@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  pro_id: 1
+  type: 
+  date: 2015-12-08
+  time: 2015-12-08 11:57:43
+  location: MyString
+  references: 
+
+two:
+  user_id: 1
+  pro_id: 1
+  type: 
+  date: 2015-12-08
+  time: 2015-12-08 11:57:43
+  location: MyString
+  references: 

@@ -13,6 +13,7 @@
   <tbody>
     <% @pros.each do |pro| %>
       <tr>
+        <td><%= image_tag pro.image.url(:thumb) %></td>        
         <td><%= pro.name %></td>
         <td><%= pro.description %></td>
         <td>
@@ -22,6 +23,17 @@
             <%= pro.workout.running ? raw('<li>Running</li>') : nil %>
           </ul>
         </td>
+
+        <td>
+          <ul>
+            <%= pro.location.hollywood ? raw('<li>Hollywood</li>') : nil %>
+            <%= pro.location.westside ? raw('<li>Westside</li>') : nil %>
+            <%= pro.location.valley ? raw('<li>Valley</li>') : nil %>
+            <%= pro.location.century_city ? raw('<li>Century City</li>') : nil %>
+
+          </ul>
+        </td>
+                
         <td><%= link_to 'Show', pro %></td>
         <td><%= link_to 'Edit', edit_pro_path(pro) %></td>
         <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,24 +1,46 @@
-<h1>Listing pros</h1>
+<h1>All pros</h1>
+
+<% if user_signed_in? %>
+<h1>Welcome <%= current_user.name %> </h1> 
+<h2>Your have <%= current_user.sessions %> sessions remaining to book</h2> <br>
+
+<% end %>
+<% 
+# I would like to add a welcome user.name
+# message at the top for those who are signed in
+# but i don't know how to give control in the controller
+%>
 
 <div class="well well-sm">
-  <p><strong>Workout filter: </strong></p>
+  <p><strong>Refine the pros: </strong></p>
 
-  <%= search_form_for @q, url: results_pros_path do |f| %>
-
+  <%= search_form_for @q do |f| %>
     <%= f.input :workout_weights_true, as: :boolean, label: "Weights" %>
     <%= f.input :workout_yoga_true, as: :boolean, label: "Yoga" %>
     <%= f.input :workout_running_true, as: :boolean, label: "Running" %>
+  <p><strong>Locations served: </strong></p>
+    <%= f.input :location_hollywood_true, as: :boolean, label: "Hollywood" %>
+    <%= f.input :location_westside_true, as: :boolean, label: "Westside" %>
+    <%= f.input :location_valley_true, as: :boolean, label: "Valley" %>
+    <%= f.input :location_century_city_true, as: :boolean, label: "Century City" %>
 
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-danger' %>
   <% end %>
+   <br>
+   <p>Or find the perfect match!   <%= link_to 'Take the Quiz', quiz_path, class: 'btn btn-info' %>     </p> 
+
+
 </div>
 
 <table class="table">
   <thead>
     <tr>
+      <th>Image</th>      
       <th>Name</th>
       <th>Description</th>
       <th>Workout</th>
+      <th>Location</th>      
+      <th>Intesity Score</th>      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +48,7 @@
   <tbody>
     <% @pros.each do |pro| %>
       <tr>
+        <td><%= image_tag pro.image.url(:thumb) %></td>
         <td><%= pro.name %></td>
         <td><%= pro.description %></td>
         <td>
@@ -35,6 +58,18 @@
             <%= pro.workout.running ? raw('<li>Running</li>') : nil %>
           </ul>
         </td>
+        <td>
+          <ul>
+            <%= pro.location.hollywood ? raw('<li>Hollywood</li>') : nil %>
+            <%= pro.location.westside ? raw('<li>Westside</li>') : nil %>
+            <%= pro.location.valley ? raw('<li>Valley</li>') : nil %>
+            <%= pro.location.century_city ? raw('<li>Century City</li>') : nil %>
+        
+          </ul>
+        </td>
+        <td>  <% # this code is not working so i'm commenting it out
+        #  pro.style.approach + pro.style.intensity + pro.style.plan   
+        %>           
         <td><%= link_to 'Show', pro %></td>
         <td><%= link_to 'Edit', edit_pro_path(pro) %></td>
         <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -42,3 +77,4 @@
     <% end %>
   </tbody>
 </table>
+
