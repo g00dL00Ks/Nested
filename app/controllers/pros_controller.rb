@@ -4,9 +4,12 @@ class ProsController < ApplicationController
   # GET /pros
   # GET /pros.json
   def index
+<<<<<<< HEAD
 #    @user = User.all.where(user: current_user)
 
 
+=======
+>>>>>>> origin/master
     # on the index page we want to filter on the same page
     # quiz page will deliver results on a new page
      if params[:q]

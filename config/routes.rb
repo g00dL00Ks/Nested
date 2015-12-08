@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   get 'quiz' => "pros#quiz"
 
+<<<<<<< HEAD
   get 'account' => "pros#account"
+=======
+  get 'account' => "devise#account"
+>>>>>>> origin/master
 
   root 'pros#index'
 

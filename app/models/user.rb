@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+<<<<<<< HEAD
   has_many :booking
 
   validates :name, presence: true         
+=======
+   validates :name, presence: true         
+>>>>>>> origin/master
 end
