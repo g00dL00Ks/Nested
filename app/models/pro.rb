@@ -12,8 +12,13 @@
 class Pro < ActiveRecord::Base
 	has_one :workout, dependent: :destroy
 	has_one :location, dependent: :destroy	
+<<<<<<< HEAD
 	has_one :style, dependent: :destroy
 	accepts_nested_attributes_for :workout, reject_if: :all_blank, allow_destroy: true
 	accepts_nested_attributes_for :location, reject_if: :all_blank, allow_destroy: true	
 	accepts_nested_attributes_for :style, reject_if: :all_blank, allow_destroy: true
+=======
+	accepts_nested_attributes_for :workout, reject_if: :all_blank, allow_destroy: true
+	accepts_nested_attributes_for :location, reject_if: :all_blank, allow_destroy: true
+>>>>>>> origin/master
 end

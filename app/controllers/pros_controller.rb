@@ -21,7 +21,10 @@ class ProsController < ApplicationController
     @pro = Pro.new
     @pro.build_workout
     @pro.build_location
+<<<<<<< HEAD
     @pro.build_style    
+=======
+>>>>>>> origin/master
   end
 
   # GET /pros/1/edit
@@ -97,11 +100,15 @@ class ProsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pro_params
+<<<<<<< HEAD
       params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running],
         location_attributes: [:hollywood, :westside, :valley, :century_city],
         style_attributes: [:appraoch, :intensity, :plan])
 
 
+=======
+      params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running], location_attributes: [:hollywood, :westside, :valley, :century_city])
+>>>>>>> origin/master
 
     end
 end
