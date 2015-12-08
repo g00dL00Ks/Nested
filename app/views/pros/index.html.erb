@@ -1,16 +1,25 @@
-<h1>Listing pros</h1>
+<h1>All pros</h1>
 
 <div class="well well-sm">
-  <p><strong>Workout filter: </strong></p>
+  <p><strong>Refine the pros: </strong></p>
 
   <%= search_form_for @q, url: results_pros_path do |f| %>
 
     <%= f.input :workout_weights_true, as: :boolean, label: "Weights" %>
     <%= f.input :workout_yoga_true, as: :boolean, label: "Yoga" %>
     <%= f.input :workout_running_true, as: :boolean, label: "Running" %>
+  <p><strong>Locations served: </strong></p>
+    <%= f.input :location_hollywood_true, as: :boolean, label: "Hollywood" %>
+    <%= f.input :location_westside_true, as: :boolean, label: "Westside" %>
+    <%= f.input :location_valley_true, as: :boolean, label: "Valley" %>
+    <%= f.input :location_century_city_true, as: :boolean, label: "Century City" %>
 
     <%= f.button :submit %>
   <% end %>
+   <br>
+   <p>Or find the perfect match!   <%= link_to 'Take the Quiz', quiz_path, class: 'btn btn-info' %>     </p> 
+
+
 </div>
 
 <table class="table">
@@ -35,6 +44,15 @@
             <%= pro.workout.running ? raw('<li>Running</li>') : nil %>
           </ul>
         </td>
+        <td>
+          <ul>
+            <%= pro.location.hollywood ? raw('<li>Hollywood</li>') : nil %>
+            <%= pro.location.westside ? raw('<li>Westside</li>') : nil %>
+            <%= pro.location.valley ? raw('<li>Valley</li>') : nil %>
+            <%= pro.location.century_city ? raw('<li>Century City</li>') : nil %>
+
+          </ul>
+        </td>
         <td><%= link_to 'Show', pro %></td>
         <td><%= link_to 'Edit', edit_pro_path(pro) %></td>
         <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -42,3 +60,4 @@
     <% end %>
   </tbody>
 </table>
+

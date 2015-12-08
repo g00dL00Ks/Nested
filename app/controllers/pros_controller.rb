@@ -7,6 +7,9 @@ class ProsController < ApplicationController
     @pros = Pro.all
   end
 
+  def quiz
+    @pros = Pro.all
+  end
   # GET /pros/1
   # GET /pros/1.json
   def show
@@ -17,6 +20,8 @@ class ProsController < ApplicationController
   def new
     @pro = Pro.new
     @pro.build_workout
+    @pro.build_location
+    @pro.build_style    
   end
 
   # GET /pros/1/edit
@@ -69,12 +74,19 @@ class ProsController < ApplicationController
       @params.delete(:workout_weights_true) if @params[:workout_weights_true] == '0'
       @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
       @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
+
+      @params.delete(:location_hollywood_true) if @params[:location_hollywood_true] == '0'
+      @params.delete(:location_westside_true) if @params[:location_westside_true] == '0'
+      @params.delete(:location_valley_true) if @params[:location_valley_true] == '0'
+      @params.delete(:location_century_city_true) if @params[:location_century_city_true] == '0'
+
+
     else
       @params = []
     end
 
     @q = Pro.ransack(@params)
-    @pros = @q.result(distinct: true).includes(:workout)
+    @pros = @q.result(distinct: true).includes(:workout).includes(:location)
   end
 
   private
@@ -85,6 +97,11 @@ class ProsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pro_params
-      params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running])
+      params.require(:pro).permit(:name, :description, workout_attributes: [:weights, :yoga, :running],
+        location_attributes: [:hollywood, :westside, :valley, :century_city],
+        style_attributes: [:appraoch, :intensity, :plan])
+
+
+
     end
 end

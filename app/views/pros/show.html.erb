@@ -22,5 +22,19 @@
   <p>none available</p>
 <% end %>
 
+<h2>Locations</h2>
+
+<ul>
+  <%= @pro.location.hollywood ? raw('<li>Hollywood</li>') : nil %>
+  <%= @pro.location.westside ? raw('<li>Westside</li>') : nil %>
+  <%= @pro.location.valley ? raw('<li>Valley</li>') : nil %>
+  <%= @pro.location.century_city ? raw('<li>Century City</li>') : nil %>  
+</ul>
+
+<% if !@pro.location.hollywood && !@pro.location.westside && !@pro.location.valley && !@pro.location.century_city %>
+  <p>none available</p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_pro_path(@pro) %> |
 <%= link_to 'Back', pros_path %>
