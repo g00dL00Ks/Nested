@@ -1,0 +1,31 @@
+<%
+# this page is not working
+# how do i create as summary overview page of the account?
+%>
+
+
+<% if user_signed_in? %>
+<h1>Welcome <%= current_user.name %> </h1> <br>
+<% end %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>      
+      <th>Email</th>
+      <th>Remaining Sessions:</th>   
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+    <thead>
+    <tr>
+      <th><%= current_user.name %></th>      
+      <th><%= current_user.email %></th>     
+      <th><%= current_user.sessions %></th>     
+
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
