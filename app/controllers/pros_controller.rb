@@ -4,9 +4,24 @@ class ProsController < ApplicationController
   # GET /pros
   # GET /pros.json
   def index
+<<<<<<< HEAD
 #    @user = User.all.where(user: current_user)
 
 
+=======
+<<<<<<< HEAD
+#    @user = User.all.where(user: current_user)
+
+
+=======
+<<<<<<< HEAD
+#    @user = User.all.where(user: current_user)
+
+
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
     # on the index page we want to filter on the same page
     # quiz page will deliver results on a new page
      if params[:q]
@@ -123,6 +138,15 @@ class ProsController < ApplicationController
       params.require(:pro).permit(:name, :description, :image, workout_attributes: [:weights, :yoga, :running],
         location_attributes: [:hollywood, :westside, :valley, :century_city],
         style_attributes: [:approach, :intensity, :plan])
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> origin/master
+>>>>>>> origin/master
     end
 
 

@@ -16,8 +16,14 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @booking.user_id = current_user.id
+<<<<<<< HEAD
     @booking.pro_id = Pro.find_by_id(params[:id])
 
+=======
+    @booking.pro_id = Pro.find(params[:id])
+
+    respond_with(@booking)
+>>>>>>> origin/master
 
   end
 
@@ -28,6 +34,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+<<<<<<< HEAD
  
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
@@ -35,6 +42,17 @@ class BookingsController < ApplicationController
   # @pro = Pro.find_by_id(params[:id])
   # @booking.pro_id = @pro
     @booking.pro_id = Pro.find_by_id(params[:id])
+=======
+    @booking = Booking.new(booking_params)
+    @booking.user_id = current_user.id
+    @pro = Pro.find(params[:id])
+    #find the listing of the ID in the URL
+    @seller = @listing.user
+    @order.listing_id = @listing.id
+    @order.buyer_id = current_user.id 
+    @order.seller_id = @seller.id
+
+>>>>>>> origin/master
 
     respond_to do |format|
       if @booking.save
@@ -80,6 +98,10 @@ class BookingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
 
+<<<<<<< HEAD
     params.require(:booking).permit(:date, :time, :type, :location)
+=======
+    params.require(:pro).permit(:type, :date, :time, :location)
+>>>>>>> origin/master
     end
 end

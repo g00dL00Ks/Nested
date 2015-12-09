@@ -9,9 +9,23 @@
  
 
 class Booking < ActiveRecord::Base
+<<<<<<< HEAD
 	 validates  :date, :time, :location, presence: true
 
 	 belongs_to :pro, class_name: "Pro"
  	 belongs_to :user, class_name: "User"
 
+=======
+	 validates :type, :date, :time, :location, presence: true
+
+<<<<<<< HEAD
+	 belongs_to :pro, class_name: "Pro"
+ 	 belongs_to :user, class_name: "User"
+
+=======
+	 belongs_to :pro
+	 belongs_to :user
+	 
+>>>>>>> origin/master
+>>>>>>> origin/master
 end
