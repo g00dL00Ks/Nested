@@ -1,9 +1,8 @@
 <div class='nested-fields'>
-  <%= f.input :approach,  :as => :integer %>
-  <%= f.input :intensity, :as => :integer %>
-  <%= f.input :plan, :as => :integer %>
-
-
-
-
+  <%= f.input :approach, collection: Style::APPROACH,
+    as: :radio_buttons, label: 'What type of workout experiences do you coach:' %>
+  <%= f.input :intensity, collection: Style::INTENSITY,
+    as: :radio_buttons, label: 'After a workout, my clients feel:' %>
+  <%= f.input :plan, collection: Style::PLAN,
+    as: :radio_buttons, label: 'I am a trainer who:' %>
 </div>

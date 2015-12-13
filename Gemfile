@@ -13,10 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-gem "cocoon"
-gem 'simple_form'
 
-gem 'bootstrap-sass', '~> 3.3.5'	
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -28,10 +25,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "paperclip", "~> 4.3"
+
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -45,3 +42,8 @@ gem 'annotate', group: :development
 gem 'quiet_assets', group: :development
 
 gem 'ransack'
+gem 'devise'
+gem "paperclip", "~> 4.3"
+gem "cocoon"
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.5'  

@@ -6,23 +6,24 @@
     <%= f.input :description %>
     <%= f.input :image, :as => :file %>
 
-
-
-    <h3>workouts</h3>
-    <div id='workouts'>
-      <%= f.simple_fields_for :workout do |workout| %>
-        <%= render 'workout_fields', :f => workout %>
-      <% end %>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>Workouts</h3>
+        <div id='workouts'>
+          <%= f.simple_fields_for :workout do |workout| %>
+            <%= render 'workout_fields', :f => workout %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h3>Locations</h3>
+        <div id='locations'>
+          <%= f.simple_fields_for :location do |location| %>
+            <%= render 'location_fields', :f => location %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-
-    <h3>locations</h3>
-    <div id='locations'>
-      <%= f.simple_fields_for :location do |location| %>
-        <%= render 'location_fields', :f => location %>
-      <% end %>
-    </div>
-
 
     <h3>Workout style</h3>
     <div id='styles'>
@@ -30,6 +31,8 @@
         <%= render 'style_fields', :f => style %>
       <% end %>
     </div>
+  
+  </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
