@@ -1,45 +1,20 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :check_balance
+  before_action :set_pro, only: [:new, :create]
 
-  # GET /bookings
-  # GET /bookings.json
-  def index
-    @bookings = Booking.all
-  end
-
-  # GET /bookings/1
-  # GET /bookings/1.json
-  def show
-  end
-
-  # GET /bookings/new
   def new
-    @booking = Booking.new
-    @booking.user_id = current_user.id
-    @booking.pro_id = Pro.find(params[:id])
-
-    respond_with(@booking)
+    @booking = current_user.bookings.build
   end
 
-  # GET /bookings/1/edit
-  def edit
-  end
-
-  # POST /bookings
-  # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
-    @booking.user_id = current_user.id
-    @pro = Pro.find(params[:id])
-    #find the listing of the ID in the URL
-    @seller = @listing.user
-    @order.listing_id = @listing.id
-    @order.buyer_id = current_user.id 
-    @order.seller_id = @seller.id
+    @booking = current_user.bookings.build(booking_params)
+    @booking.pro = @pro
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        current_user.decrement!(:sessions)
+        format.html { redirect_to account_url, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -48,38 +23,17 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1
-  # PATCH/PUT /bookings/1.json
-  def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /bookings/1
-  # DELETE /bookings/1.json
-  def destroy
-    @booking.destroy
-    respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:date, :time, :type, :location)
+      params.require(:booking).permit(:date, :time, :genre, :location)
+    end
+
+    def set_pro
+      @pro = Pro.find(params[:pro_id])
+    end
+
+    def check_balance
+      redirect_to root_url, notice: 'you must have a positive balance.' unless current_user.sessions > 0
     end
 end

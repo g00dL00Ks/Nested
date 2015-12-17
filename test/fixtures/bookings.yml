@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  pro_id     :integer
-#  type       :string(255)
+#  genre      :string(255)
 #  date       :date
 #  time       :time
 #  location   :string(255)

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208195743) do
+ActiveRecord::Schema.define(version: 20151217204847) do
 
   create_table "bookings", force: true do |t|
     t.integer  "user_id"
     t.integer  "pro_id"
-    t.string   "type"
+    t.string   "genre"
     t.date     "date"
     t.time     "time"
     t.string   "location"

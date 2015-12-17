@@ -4,7 +4,7 @@ class CreateStyles < ActiveRecord::Migration
       t.integer :approach
       t.integer :intensity
       t.integer :plan
-      t.references :pro, index: true
+      t.belongs_to :pro, index: true
 
       t.timestamps
     end

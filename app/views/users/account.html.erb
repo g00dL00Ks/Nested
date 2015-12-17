@@ -1,0 +1,25 @@
+<p>Your balance is <%= current_user.sessions %>.</p>
+
+<h1>Bookings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.genre %></td>
+        <td><%= booking.date %></td>
+        <td><%= booking.time.strftime("%I:%M %p") %></td>
+        <td><%= booking.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

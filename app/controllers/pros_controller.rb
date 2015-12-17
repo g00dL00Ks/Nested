@@ -12,7 +12,6 @@ class ProsController < ApplicationController
       @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
       @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
 
-
       @params.delete(:location_hollywood_true)    if @params[:location_hollywood_true] == '0'
       @params.delete(:location_westside_true)     if @params[:location_westside_true] == '0'
       @params.delete(:location_valley_true)       if @params[:location_valley_true] == '0'
@@ -39,7 +38,10 @@ class ProsController < ApplicationController
     @pro = Pro.new
     @pro.build_workout
     @pro.build_location
-    @pro.build_style    
+    @pro.build_style
+    @pro.style.approach = 10
+    @pro.style.intensity = 10
+    @pro.style.plan = 10
   end
 
   # GET /pros/1/edit
@@ -102,7 +104,7 @@ class ProsController < ApplicationController
     end
 
     @q = Pro.ransack(@params)
-    @pros = @q.result(distinct: true).includes(:workout).includes(:location)
+    @pros = @q.result(distinct: true).includes(:workout, :location, :style).limit(3)
   end
 
   private
@@ -113,10 +115,12 @@ class ProsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pro_params
-      params.require(:pro).permit(:name, :description, :image, 
-        workout_attributes: [:weights, :yoga, :running],
+      params.require(:pro).permit(
+        :name, :description, :image, 
+        workout_attributes:  [:weights, :yoga, :running],
         location_attributes: [:hollywood, :westside, :valley, :century_city],
-        style_attributes: [:approach, :intensity, :plan])
+        style_attributes:    [:approach, :intensity, :plan]
+      )
     end
 
 

@@ -15,9 +15,9 @@
 
 class Pro < ActiveRecord::Base
   has_many :bookings
-	has_one  :workout,  dependent: :destroy
-	has_one  :location, dependent: :destroy	
-	has_one  :style,    dependent: :destroy
+	has_one  :workout,  inverse_of: :pro, dependent: :destroy
+	has_one  :location, inverse_of: :pro, dependent: :destroy	
+	has_one  :style,    inverse_of: :pro, dependent: :destroy
 
   accepts_nested_attributes_for :workout,
     reject_if: :all_blank, 

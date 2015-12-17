@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
+  get 'account', to: 'users#account', as: 'account'
   
-  resources :bookings
   
   resources :pros do
     get 'results', on: :collection
     get 'quiz',    on: :collection
+    resources :bookings, only: [:new, :create]
   end
   
   root 'pros#index'

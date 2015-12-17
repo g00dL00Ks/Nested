@@ -1,15 +1,9 @@
-<h1>All pros</h1>
-
 <% if user_signed_in? %>
   <h1>Welcome <%= current_user.name %> </h1> 
   <h2>Your have <%= current_user.sessions %> sessions remaining to book</h2> <br>
 <% end %>
 
-<% 
-# I would like to add a welcome user.name
-# message at the top for those who are signed in
-# but i don't know how to give control in the controller
-%>
+<h1>All pros</h1>
 
 <div class="well well-sm">
   <p><strong>Refine the pros: </strong></p>
@@ -64,12 +58,9 @@
             <%= pro.location.westside ? raw('<li>Westside</li>') : nil %>
             <%= pro.location.valley ? raw('<li>Valley</li>') : nil %>
             <%= pro.location.century_city ? raw('<li>Century City</li>') : nil %>
-        
           </ul>
         </td>
-        <td>  <% # this code is not working so i'm commenting it out
-        #  pro.style.approach + pro.style.intensity + pro.style.plan   
-        %>           
+        <td><%= pro.style.score %></td>   
         <td><%= link_to 'Show', pro %></td>
         <td><%= link_to 'Edit', edit_pro_path(pro) %></td>
         <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
