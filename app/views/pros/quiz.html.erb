@@ -1,19 +1,26 @@
 <h1>Pro Matcher - find your right trainer</h1>
 
 <div class="well well-sm">
-  <h2>What type of workout do you want?</h2>
-
   <%= search_form_for @q, url: results_pros_path do |f| %>
 
+    <h2>What type of workout do you want?</h2>
     <%= f.input :workout_weights_true, as: :boolean, label: "Weights" %>
     <%= f.input :workout_yoga_true, as: :boolean, label: "Yoga" %>
     <%= f.input :workout_running_true, as: :boolean, label: "Running" %>
-  <h2>What's your location?</h2>
+    
+    <h2>What's your location?</h2>
     <%= f.input :location_hollywood_true, as: :boolean, label: "Hollywood" %>
     <%= f.input :location_westside_true, as: :boolean, label: "Westside" %>
     <%= f.input :location_valley_true, as: :boolean, label: "Valley" %>
     <%= f.input :location_century_city_true, as: :boolean, label: "Century City" %>
-
+    
+    <h2>Workout style</h2>
+    <%= f.input :style_approach_eq, collection: Style::APPROACH,
+      as: :radio_buttons, label: 'What type of workout experiences do you want?', required: false %>
+    <%= f.input :style_intensity_eq, collection: Style::INTENSITY,
+      as: :radio_buttons, label: 'After a workout, I like to feel:', required: false %>
+    <%= f.input :style_plan_eq, collection: Style::PLAN,
+      as: :radio_buttons, label: 'I like a trainer who', required: false %>
 
     <%= f.button :submit %>
   <% end %>

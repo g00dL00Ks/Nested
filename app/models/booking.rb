@@ -1,31 +1,21 @@
-#  create_table :bookings do |t|
-#     t.integer :user_id
-#      t.integer :pro_id
-#      t.string :type
-#      t.date :date
-#      t.time :time
-#      t.string :location
-#      t.timestamps
- 
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  pro_id     :integer
+#  genre      :string(255)
+#  date       :date
+#  time       :time
+#  location   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
 
 class Booking < ActiveRecord::Base
-<<<<<<< HEAD
-	 validates  :date, :time, :location, presence: true
-
-	 belongs_to :pro, class_name: "Pro"
- 	 belongs_to :user, class_name: "User"
-
-=======
-	 validates :type, :date, :time, :location, presence: true
-
-<<<<<<< HEAD
-	 belongs_to :pro, class_name: "Pro"
- 	 belongs_to :user, class_name: "User"
-
-=======
-	 belongs_to :pro
-	 belongs_to :user
-	 
->>>>>>> origin/master
->>>>>>> origin/master
+   belongs_to :pro
+   belongs_to :user
+   
+	 validates :genre, :date, :time, :location, presence: true
 end

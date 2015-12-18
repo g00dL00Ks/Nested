@@ -1,30 +1,9 @@
-<h1>All pros</h1>
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
->>>>>>> origin/master
 <% if user_signed_in? %>
-<h1>Welcome <%= current_user.name %> </h1> 
-<h2>Your have <%= current_user.sessions %> sessions remaining to book</h2> <br>
-
+  <h1>Welcome <%= current_user.name %> </h1> 
+  <h2>Your have <%= current_user.sessions %> sessions remaining to book</h2> <br>
 <% end %>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
-<% 
-# I would like to add a welcome user.name
-# message at the top for those who are signed in
-# but i don't know how to give control in the controller
-%>
+
+<h1>All pros</h1>
 
 <div class="well well-sm">
   <p><strong>Refine the pros: </strong></p>
@@ -42,7 +21,7 @@
     <%= f.button :submit, class: 'btn btn-danger' %>
   <% end %>
    <br>
-   <p>Or find the perfect match!   <%= link_to 'Take the Quiz', quiz_path, class: 'btn btn-info' %>     </p> 
+   <p>Or find the perfect match!   <%= link_to 'Take the Quiz', quiz_pros_path, class: 'btn btn-info' %>     </p> 
 
 
 </div>
@@ -63,11 +42,7 @@
   <tbody>
     <% @pros.each do |pro| %>
       <tr>
-<<<<<<< HEAD
-        <td><%= link_to image_tag(pro.image.url(:thumb)), pro %></td>
-=======
         <td><%= image_tag pro.image.url(:thumb) %></td>
->>>>>>> origin/master
         <td><%= pro.name %></td>
         <td><%= pro.description %></td>
         <td>
@@ -83,12 +58,9 @@
             <%= pro.location.westside ? raw('<li>Westside</li>') : nil %>
             <%= pro.location.valley ? raw('<li>Valley</li>') : nil %>
             <%= pro.location.century_city ? raw('<li>Century City</li>') : nil %>
-        
           </ul>
         </td>
-        <td>  <% # this code is not working so i'm commenting it out
-        #  pro.style.approach + pro.style.intensity + pro.style.plan   
-        %>           
+        <td><%= pro.style.score %></td>   
         <td><%= link_to 'Show', pro %></td>
         <td><%= link_to 'Edit', edit_pro_path(pro) %></td>
         <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %></td>

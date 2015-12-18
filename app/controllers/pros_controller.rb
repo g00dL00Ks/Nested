@@ -4,24 +4,6 @@ class ProsController < ApplicationController
   # GET /pros
   # GET /pros.json
   def index
-<<<<<<< HEAD
-#    @user = User.all.where(user: current_user)
-
-
-=======
-<<<<<<< HEAD
-#    @user = User.all.where(user: current_user)
-
-
-=======
-<<<<<<< HEAD
-#    @user = User.all.where(user: current_user)
-
-
-=======
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
     # on the index page we want to filter on the same page
     # quiz page will deliver results on a new page
      if params[:q]
@@ -30,12 +12,10 @@ class ProsController < ApplicationController
       @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
       @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
 
-
-      @params.delete(:location_hollywood_true) if @params[:location_hollywood_true] == '0'
-      @params.delete(:location_westside_true) if @params[:location_westside_true] == '0'
-      @params.delete(:location_valley_true) if @params[:location_valley_true] == '0'
+      @params.delete(:location_hollywood_true)    if @params[:location_hollywood_true] == '0'
+      @params.delete(:location_westside_true)     if @params[:location_westside_true] == '0'
+      @params.delete(:location_valley_true)       if @params[:location_valley_true] == '0'
       @params.delete(:location_century_city_true) if @params[:location_century_city_true] == '0'
-
     else
       @params = []
     end
@@ -50,7 +30,6 @@ class ProsController < ApplicationController
   # GET /pros/1
   # GET /pros/1.json
   def show
-
   end
 
 
@@ -59,7 +38,10 @@ class ProsController < ApplicationController
     @pro = Pro.new
     @pro.build_workout
     @pro.build_location
-    @pro.build_style    
+    @pro.build_style
+    @pro.style.approach = 10
+    @pro.style.intensity = 10
+    @pro.style.plan = 10
   end
 
   # GET /pros/1/edit
@@ -113,18 +95,16 @@ class ProsController < ApplicationController
       @params.delete(:workout_yoga_true)    if @params[:workout_yoga_true] == '0'
       @params.delete(:workout_running_true) if @params[:workout_running_true] == '0'
 
-      @params.delete(:location_hollywood_true) if @params[:location_hollywood_true] == '0'
-      @params.delete(:location_westside_true) if @params[:location_westside_true] == '0'
-      @params.delete(:location_valley_true) if @params[:location_valley_true] == '0'
+      @params.delete(:location_hollywood_true)    if @params[:location_hollywood_true] == '0'
+      @params.delete(:location_westside_true)     if @params[:location_westside_true] == '0'
+      @params.delete(:location_valley_true)       if @params[:location_valley_true] == '0'
       @params.delete(:location_century_city_true) if @params[:location_century_city_true] == '0'
-
-
     else
       @params = []
     end
 
     @q = Pro.ransack(@params)
-    @pros = @q.result(distinct: true).includes(:workout).includes(:location)
+    @pros = @q.result(distinct: true).includes(:workout, :location, :style).limit(3)
   end
 
   private
@@ -135,18 +115,12 @@ class ProsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pro_params
-      params.require(:pro).permit(:name, :description, :image, workout_attributes: [:weights, :yoga, :running],
+      params.require(:pro).permit(
+        :name, :description, :image, 
+        workout_attributes:  [:weights, :yoga, :running],
         location_attributes: [:hollywood, :westside, :valley, :century_city],
-        style_attributes: [:approach, :intensity, :plan])
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> origin/master
->>>>>>> origin/master
+        style_attributes:    [:approach, :intensity, :plan]
+      )
     end
 
 

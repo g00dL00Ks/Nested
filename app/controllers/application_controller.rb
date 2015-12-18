@@ -15,21 +15,9 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :name 
-<<<<<<< HEAD
+    
     devise_parameter_sanitizer.for(:sign_up) << :sessions
-    devise_parameter_sanitizer.for(:account_update) << :sessions     
-=======
-<<<<<<< HEAD
-    devise_parameter_sanitizer.for(:sign_up) << :sessions
-    devise_parameter_sanitizer.for(:account_update) << :sessions     
-=======
-<<<<<<< HEAD
-    devise_parameter_sanitizer.for(:sign_up) << :sessions
-    devise_parameter_sanitizer.for(:account_update) << :sessions     
-=======
->>>>>>> origin/master
->>>>>>> origin/master
->>>>>>> origin/master
+    devise_parameter_sanitizer.for(:account_update) << :sessions
   end
 end
 
