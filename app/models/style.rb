@@ -32,12 +32,4 @@ class Style < ActiveRecord::Base
   def score
     self.approach + self.intensity + self.plan
   end
-
-  # ransacker :score do
-  #   query = <<-SQL
-  #     (Sum("styles.approach" + "styles.intensity" + "styles.plan")
-  #     )
-  #   SQL
-  #   Arel.sql(query)
-  # end
 end
