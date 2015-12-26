@@ -99,12 +99,24 @@ class ProsController < ApplicationController
       @params.delete(:location_westside_true)     if @params[:location_westside_true] == '0'
       @params.delete(:location_valley_true)       if @params[:location_valley_true] == '0'
       @params.delete(:location_century_city_true) if @params[:location_century_city_true] == '0'
+
+      score = @params[:style_approach_eq].to_i +
+              @params[:style_intensity_eq].to_i +
+              @params[:style_plan_eq].to_i
+
+      @params.delete(:style_approach_eq) 
+      @params.delete(:style_intensity_eq)  
+      @params.delete(:style_plan_eq) 
+
     else
       @params = []
     end
 
     @q = Pro.ransack(@params)
-    @pros = @q.result(distinct: true).includes(:workout, :location, :style).limit(3)
+    @pros = @q.result(distinct: true).includes(:workout, :location, :style)
+    @pros = @pros.select { |pro| pro.style.score <= score }
+            .sort { |a,b| b.style.score <=> a.style.score }
+            .first(3)
   end
 
   private
@@ -122,6 +134,4 @@ class ProsController < ApplicationController
         style_attributes:    [:approach, :intensity, :plan]
       )
     end
-
-
 end
