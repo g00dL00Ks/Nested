@@ -5,6 +5,7 @@
 
 <h1>All pros</h1>
 
+
 <div class="well well-sm">
   <p><strong>Refine the pros: </strong></p>
 
@@ -60,7 +61,7 @@
             <%= pro.location.century_city ? raw('<li>Century City</li>') : nil %>
           </ul>
         </td>
-        <td><%= pro.style.score %></td>   
+        <td><%=  pro.try(:score) %></td>   
         <td><%= link_to 'Show', pro %></td>
         <td><%= link_to 'Edit', edit_pro_path(pro) %></td>
         <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
