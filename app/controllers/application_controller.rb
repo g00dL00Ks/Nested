@@ -14,14 +14,12 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
-    devise_parameter_sanitizer.for(:account_update) << :name 
-    
+    devise_parameter_sanitizer.for(:account_update) << :name
+
     devise_parameter_sanitizer.for(:sign_up) << :sessions
     devise_parameter_sanitizer.for(:account_update) << :sessions
+
+    devise_parameter_sanitizer.for(:sign_up) << :city
+    devise_parameter_sanitizer.for(:account_update) << :city
   end
 end
-
-
-
-
-

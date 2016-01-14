@@ -18,6 +18,7 @@
 #  name                   :string(255)
 #  role                   :boolean
 #  sessions               :integer
+#  city                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -25,8 +26,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
+
   has_many :bookings
 
-  validates :name, presence: true
+  validates :name, :city, presence: true
 end
