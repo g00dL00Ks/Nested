@@ -18,6 +18,7 @@
 #  name                   :string(255)
 #  role                   :boolean
 #  sessions               :integer
+#  city                   :string(255)
 #
 
 require 'test_helper'
