@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  look: false
+  feel: false
+  be: false
+  author: MyString
+
+two:
+  title: MyString
+  content: MyText
+  look: false
+  feel: false
+  be: false
+  author: MyString

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :blogs
+
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :users
   get 'account', to: 'users#account', as: 'account'
   
